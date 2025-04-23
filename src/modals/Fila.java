@@ -5,6 +5,10 @@
  */
 package modals;
 
+/**
+ *
+ * @author Bruno
+ */
 public class Fila {
     private int tamanho;
     private int inicio;

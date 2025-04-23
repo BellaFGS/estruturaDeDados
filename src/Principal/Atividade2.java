@@ -3,6 +3,11 @@ package Principal;
 import javax.swing.JOptionPane;
 import modals.Pilha;
 
+/**
+ *
+ * @author Isabella Ferreira
+ */
+
 public class Atividade2 {
     public static void main(String[] args) {  
         Pilha p = new Pilha(12);
@@ -17,6 +22,7 @@ public class Atividade2 {
         for (int i = 0; i < frase.length(); i++) {
             char c = frase.charAt(i);
 
+//          Ignorando os espaços
             if (c == ' ') {
                 continue;
             }
@@ -30,7 +36,7 @@ public class Atividade2 {
             } 
             else if (c == ')' || c == ']' || c == '}') {
                 if (p.vazia()) {
-                    sfCount++; // símbolo de fechamento sem abertura correspondente
+                    sfCount++; // símbolo de abertura sem fechamento
                 } else {
                     topo = (char) p.desempilhar();
                     if (topo != c) {
@@ -46,29 +52,38 @@ public class Atividade2 {
             }
         }
 
+        saCount = p.quantidadeEmpilhados();
+
         if (erroCorrespondencia) {
-            JOptionPane.showMessageDialog(null, 
-                "Os símbolos não estão balanceados (abertura e fechamento não coincidem)!\n" +
-                "-------------------------------------------------\n" +
+            saCount = p.quantidadeEmpilhados();
+            JOptionPane.showMessageDialog(null,
+        "Os símbolos não estão balanceados (abertura e fechamento não coincidem)!\n" +
+                "-------------------------------------------------------------------------------------------\n" +
                 "Símbolos fechados corretamente: " + cfCount + "\n" +
                 "Fechamentos sem abertura: " + sfCount + "\n" +
+                "Aberturas sem fechamento: " + saCount + "\n" +
                 "Símbolos totais na expressão: " + frase.length());
-        } else if (!p.vazia()) {
-            JOptionPane.showMessageDialog(null, 
-                "Há caracteres de abertura sem fechamento!\n" +
-                "----------------------------------------------------------\n" +
+        }
+        else if (!p.vazia()) {
+            saCount = p.quantidadeEmpilhados();
+            JOptionPane.showMessageDialog(null,
+        "Há caracteres de abertura sem fechamento!\n" +
+                "---------------------------------------------------------------------------------------------\n" +
                 "Símbolos fechados corretamente: " + cfCount + "\n" +
                 "Fechamentos sem abertura: " + sfCount + "\n" +
+                "Aberturas sem fechamento: " + saCount + "\n" +
                 "Símbolos totais na expressão: " + frase.length());
-        } else if (sfCount > 0) {
+        }
+        else if (sfCount > 0) {
             JOptionPane.showMessageDialog(null, 
                 "Existem " + sfCount + " fechamento(s) sem abertura correspondente!\n" +
-                "----------------------------------------------------------\n" +
+                "-----------------------------------------------------------------------------------------------\n" +
                 "Símbolos fechados corretamente: " + cfCount + "\n" +
                 "Símbolos totais na expressão: " + frase.length());
         } else {
             JOptionPane.showMessageDialog(null, 
-                "Tudo certo! Os símbolos estão balanceados.\n" +
+        "Tudo certo!\n" +
+                "-----------------------------------------------------------------------------------------------\n" +
                 "Total de pares balanceados: " + cfCount);
         }
     }

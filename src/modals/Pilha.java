@@ -60,4 +60,8 @@ public class Pilha {
         return valorDesempilhado;
     }
 
+    //Método adicionado para contar a quantidade de itens na pilha
+    public int quantidadeEmpilhados() {
+        return topo + 1;
+    }
 }
