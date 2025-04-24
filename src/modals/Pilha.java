@@ -7,7 +7,7 @@ package modals;
 
 /**
  *
- * @author 0031432512005
+ * @author Bruno
  */
 public class Pilha {
     private int topo;
@@ -60,4 +60,8 @@ public class Pilha {
         return valorDesempilhado;
     }
 
+    //Método adicionado para contar a quantidade de itens na pilha
+    public int quantidadeEmpilhados() {
+        return topo + 1;
+    }
 }
